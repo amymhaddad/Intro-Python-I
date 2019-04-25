@@ -21,4 +21,39 @@ and does the following:
 
 import sys
 import calendar
-from datetime import datetime
+#why bring in date time this way, and not just import datetime
+#How to access and print datetime attributes, ie: datetime.year
+from datetime import datetime, time
+
+c = calendar.TextCalendar()
+
+#Update else so it captures all non-ints; make sure it works with elif condition above 
+
+def generate_calendar():
+
+  while True:
+    user_cal = input("Enter a month and year as numbers, separated by a space: ")
+ 
+    if user_cal == '':
+      current_month = datetime.now().month
+      print("Current month:" , current_month)
+      break
+
+    elif len(user_cal) == 1:
+      current_calendar = c.formatmonth(2019, int(user_cal))
+      return current_calendar
+      break
+    
+    elif len(user_cal) > 1:
+      list_user_input = user_cal.split(" ")
+      month = int(list_user_input[0])
+      year = int(list_user_input[1])
+
+      current_calendar = c.formatmonth(year, month)
+      return current_calendar
+      break
+
+    else:
+      print("Invalid input. Try again. \n")
+
+print(generate_calendar())
