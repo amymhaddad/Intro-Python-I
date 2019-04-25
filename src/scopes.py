@@ -5,6 +5,8 @@
 x = 12
 
 def changeX():
+    #change 'x' to 'global x' to access and update the global variable, 'x'  
+    global x
     x = 99
 
 changeX()
@@ -19,6 +21,8 @@ def outer():
     y = 120
 
     def inner():
+        #chanage to 'nonlocal y' to access and update the y value defined in the outer function
+        nonlocal y
         y = 999
 
     inner()
