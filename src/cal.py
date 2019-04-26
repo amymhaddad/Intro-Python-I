@@ -19,41 +19,37 @@ and does the following:
    Then exit the program.
 """
 
-import sys
 import calendar
-#why bring in date time this way, and not just import datetime
-#How to access and print datetime attributes, ie: datetime.year
+from string import ascii_letters as letters
 from datetime import datetime, time
 
 c = calendar.TextCalendar()
 
-#Update else so it captures all non-ints; make sure it works with elif condition above 
-
 def generate_calendar():
+  """Write a program that generates a calandar based on user input"""
 
   while True:
     user_cal = input("Enter a month and year as numbers, separated by a space: ")
- 
-    if user_cal == '':
-      current_month = datetime.now().month
-      print("Current month:" , current_month)
-      break
+    contains_letters = bool([letter for letter in user_cal if letter in letters])
 
-    elif len(user_cal) == 1:
-      current_calendar = c.formatmonth(2019, int(user_cal))
-      return current_calendar
-      break
-    
-    elif len(user_cal) > 1:
-      list_user_input = user_cal.split(" ")
-      month = int(list_user_input[0])
-      year = int(list_user_input[1])
-
-      current_calendar = c.formatmonth(year, month)
-      return current_calendar
-      break
-
-    else:
+    if contains_letters == True:
       print("Invalid input. Try again. \n")
 
+    else: 
+      if user_cal == '':
+        print("Current month:" , datetime.now().month)
+        break
+
+      elif len(user_cal) == 1:
+        return c.formatmonth(2019, int(user_cal))
+        break
+      
+      elif len(user_cal) > 1:
+        list_user_input = user_cal.split(" ")
+        month = int(list_user_input[0])
+        year = int(list_user_input[1])
+      
+        return c.formatmonth(year, month)
+        break
+    
 print(generate_calendar())
