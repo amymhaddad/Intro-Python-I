@@ -19,6 +19,37 @@ and does the following:
    Then exit the program.
 """
 
-import sys
 import calendar
-from datetime import datetime
+from string import ascii_letters as letters
+from datetime import datetime, time
+
+c = calendar.TextCalendar()
+
+def generate_calendar():
+  """Write a program that generates a calandar based on user input"""
+
+  while True:
+    user_cal = input("Enter a month and year as numbers, separated by a space: ")
+    contains_letters = bool([letter for letter in user_cal if letter in letters])
+
+    if contains_letters == True:
+      print("Invalid input. Try again. \n")
+
+    else: 
+      if user_cal == '':
+        print("Current month:" , datetime.now().month)
+        break
+
+      elif len(user_cal) == 1:
+        return c.formatmonth(2019, int(user_cal))
+        break
+      
+      elif len(user_cal) > 1:
+        list_user_input = user_cal.split(" ")
+        month = int(list_user_input[0])
+        year = int(list_user_input[1])
+      
+        return c.formatmonth(year, month)
+        break
+    
+print(generate_calendar())
