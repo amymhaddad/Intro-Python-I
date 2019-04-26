@@ -53,5 +53,5 @@ print(waypoints)
 
 # Write a loop that prints out all the field values for all the waypoints
 for places in waypoints:
-    for location in places.values():
-        print(location)
+    for key, values in places.items():
+        print(f"{key}: {values}")
