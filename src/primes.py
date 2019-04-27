@@ -1,17 +1,11 @@
-nums = 5
+"""Is a given number prime?"""
 
-#check first function to make sure it's working
-#update second function to check if len of factors is LESS than 2
+def is_prime(number):
+    """Determine if a number is evenly divisble by another whole number"""
 
-def get_factors(nums):
-    factors = []
-    for num in range(1, nums + 1):
-        for factor in range(1, num + 1):
-            if num * factor == nums:
-                factors.append(num)
-    return factors
+    for num in range(1, number + 1):
+        if number % num == 0:
+            return False
+        return True
 
-def is_prime(number): 
-    return len(get_factors(number)) 
-
-print(is_prime(5))
+print(is_prime(15))
